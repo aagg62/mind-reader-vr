@@ -61,7 +61,12 @@ d3.selectAll('a-assets img')._groups[0].forEach(function(e){
 window.game = {
 	init:function(){
 		if (window.metadata.datasets.length ==0){
-			window.game.loadData(function(){});	
+			categories = [];
+			
+			categories.push({key:2+ ""});
+			categories.push({key:3 + ""});
+			
+			window.game.loadData(categories, function(){});	
 		}else {
 			window.game.renderLobby();
 		}
@@ -85,17 +90,9 @@ window.game = {
 		    v1.play();
 		}
 	},
-	loadData:function(cb){
+	loadData:function(categories, cb){
 		
-
-		// window.metadata.datasets = csv;
-
-			categories = [];
-			
-			categories.push({key:2+ ""});
-			categories.push({key:3 + ""});
-			
-	        
+		     
 
 		    categories.map(function(d){
 		    	d.color = "black";
@@ -117,6 +114,7 @@ window.game = {
 
 	  	
 		var lobbyEl = document.getElementById('lobby-circle');
+		lobbyEl.innerHTML = "";
 		var entityEl = document.createElement('a-entity');
 		entityEl.setAttribute('do-circle-once-loaded', '');
 		entityEl.setAttribute('id', 'lobby-inner');

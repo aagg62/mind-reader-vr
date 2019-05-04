@@ -26,18 +26,40 @@ AFRAME.registerComponent('set-image', {
       // Fade out image.
       data.target.emit('set-image-fade');
       // Wait for fade to complete.
-       
+      for (var i = 0; i < videos.length; i++) {
+      var id = videos[i];
+        var v = document.getElementById(id);
+        v.play();
+        v.pause();
+        v.onended = function(e) {};
+      };
       window.currentMove = data.link;
       var video = document.getElementById(data.src.replace('#',''));
       video.addEventListener('ended', myHandler, false);
       video.play();
+      var playLoop = false;
+      video.addEventListener('timeupdate', (e) => {
+          var z = v1.duration - 5;
+           if (v1.currentTime > z && !playLoop){
+            playLoop = true;
+            var categories = [];
+            categories.push({key:4+ ""});
+            categories.push({key:5 + ""});
+            window.game.loadData(categories, function(){}); 
+            window.game.renderLobby();
+           }
+      });
       function myHandler(e) {
           video.currentTime = v1.currentTime -5 ; 
           video.play();
+
+           
       }
       data.target.setAttribute('material', 'src', data.src);
 
-      // window.game.renderCategory(window.currentMove);
+      //Remove current place.
+
+      
 
     });
   },
