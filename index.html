@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>¿Se sanciona o no al alumno?</title>
+    <meta name="description" content="Experiencia inmersiva de toma de decisiones en educación.">
+    <script src="libs/aframe.min.js"></script>
+    <script src="libs/aframe-animation-component.min.js"></script> 
+    <script src="libs/aframe-event-set-component.js"></script>
+    <script src="libs/aframe-layout-component.min.js"></script> 
+    <script src="libs/aframe-template-component.min.js"></script> 
+    <script src="libs/aframe-look-at-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-border-component@0.1.3/dist/aframe-border-component.min.js"></script>   
+
+    <script src="libs/d3/d3.min.js"></script>
+    <script src="libs/nunjucks.min.js"> </script>
+    <link href="stylesheets/main.css" rel="stylesheet">
+  <body>
+    <a-scene  light="defaultLightsEnabled: false">
+      <a-assets>
+        
+        <a-mixin id="font-chalet" text="font: fonts/chaletbmfont.fnt;"></a-mixin>
+        
+        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+        
+      
+        <video id="v1" src="videos/situacion.mp4"></video>
+        <video id="v2" src="videos/continuacion-1.mp4"></video>
+        <video id="v3" src="videos/continuacion-2.mp4"></video>
+        <video id="v4" src="videos/conclusion-2.mp4"></video>
+        <video id="v5" src="videos/conclusion-1.mp4"></video>
+
+
+       
+       
+
+        <img id="lobby" crossorigin="anonymous" src="images/lobby/00.png">
+
+
+        <script id="rectangle-menu" type="text/x-nunjucks-template">
+            {% set animationBaseMl = 400%}
+          <!--     <a-entity position="0 4 0" layout="type: circle; radius: 4; plane:xz;">
+              {% for x in range(0,5) %}
+                <a-entity look-at="[camera]" template="src: #poster" data-src="#lobby" data-thumb="#{{currentCategory.key}}-thumb"></a-entity>
+               {% endfor %}
+          </a-entity> -->
+           <a-entity layout="type: circle; radius: 8; plane:xz;"  position="0 0.35 0">
+            {% for x in currentCategory.firstGroup %}
+            {% set loopIndex = loop.index0 %}
+            <a-entity look-at="[camera]" layout="type: box; columns:1; margin: ; plane:xy;">
+                <a-entity>
+                  <a-entity class="item" position="0 0 1" scale="0 0 0" geometry="primitive: plane; width: 4; height: 4;" material="side:front; shader: flat; color: {{currentCategory.color}};" show-detail="on: click;item:{{x.id}}" 
+                    event-set__1="_event: mousedown; scale: 0.4 0.4 0.4"
+                      event-set__2="_event: mouseup; scale: 0.6 0.6 0.6"
+                      event-set__3="_event: mouseenter; scale: 0.6 0.6 0.6"
+                      event-set__4="_event: mouseleave; scale: 0.4 0.4 0.4"  >
+                    
+                    <a-animation attribute="scale" 
+                        delay="{{loopIndex*(animationBaseMl-220) + animationBaseMl-220}}"
+                         dur="{{animationBaseMl}}"
+                         begin="category-start"
+                         from="0 0 0"
+                         to="0.4 0.4 0.4"></a-animation>
+                    <a-entity geometry="primitive: plane; width: 4; height: 4;" material="shader: flat;">
+                      <a-text color="white" align="center" color="black" value="{{x.titulo}}" mixin="font-chalet"  width="3.5" wrap-count="15" align="center"></a-text>
+                      {% if x.isDestacado %}
+                      <a-entity position="0 -1.33 0.2">
+                    <!-- Using the asset management system. -->
+                         <a-entity geometry="primitive: plane" material="shader: flat; color: {{currentCategory.color}}; src: #start; width:1; height:1;"></a-entity>
+
+                    </a-entity>
+                     {% endif %}
+                     </a-entity>
+                     <a-entity class="detail" position="0 0 -0.3" rotation="0 180 0" geometry="primitive: plane; width: 4; height: 4;" material="side:front;opacity:1;shader:flat;color:white" visible="true" >
+                       
+ <a-entity layout="type: box;align:start; columns:1;reverse:true; margin: 0.6; plane:xy;" position="0 -1.5 0">
+                <a-text mixin="font-chalet" color="black" value="{{x.titulo}}" width="4" word-wrap="30" align="center"></a-text>
+
+                   <a-text mixin="font-chalet" color="black" value="{{x.descripcion}}" width="3.5" wrap-count="40" align="center"></a-text>
+              <a-text mixin="font-chalet" color="black" value="{{x.tamanio}} filas" align="center"></a-text>
+                <a-text mixin="font-chalet" color="black" value="{{x.frecuencia}}" align="center"></a-text>
+                
+                <a-text mixin="font-chalet" color="black" width="4" value="{{x.autoridad}}" align="center"></a-text>
+               
+                <a-entity>
+                   
+                    <!-- Trip  -->
+                  {% if x.isDestacado %}
+
+                  <a-entity position="0 0 0.22" go-to-{{x.destacado}}="on: click;item:{{x.id}}"
+                      event-set__1="_event: mousedown; scale: 1 1 1"
+                      event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+                      event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+                      event-set__4="_event: mouseleave; scale: 1 1 1" geometry="primitive: plane; width: 3; height: 0.5;" material="shader: flat; color: {{currentCategory.color}}" 
+                  sound="on: click; src: #click-sound"
+                  position="0 0 0" color="white" mixin="font-chalet" text="value: Explora una muestra; align:center">
+                  </a-entity>
+                  {% else %}
+                   <a-entity mixin="font-chalet" position="0 0 0.22"
+                      geometry="primitive: plane; width: 3; height: 0.5;" material="shader: flat;" 
+                      position="0 0 0" text="color:{{currentCategory.color}};value:Busca otro dataset para explorar; align:center">
+                      </a-entity>
+                  {% endif %}
+
+                </a-entity>
+        
+
+
+
+
+
+
+
+
+
+
+                     </a-entity>
+                        </a-entity>
+                  </a-entity>
+                </a-entity>
+                <a-entity>
+                  <a-entity layout="type: box;align:start; columns:1;reverse:true; margin: 0.6; plane:xy;">
+                    <a-entity material="side:double; shader: flat; color: white" >
+                      {% for z in range(0,x.barLength) %}
+                      <a-entity position="0 {{z*0.25 + 0.2}} 0" geometry="primitive: plane;  width: 1.8; height: 0.22;"  material="side:double; shader: flat; color: white; opacity:0.75" >
+                      </a-entity>
+                      {% endfor %}
+                    
+                   
+                  </a-entity>
+                </a-entity>
+              </a-entity>
+                 
+                 
+            </a-entity>
+            {% endfor %}
+       
+            </a-entity>
+
+         <a-entity layout="type: circle; radius: 8; plane:xz;"  position="0 -0.85 0">
+             {% for x in currentCategory.secondGroup %}
+             {% set loopIndex = loop.index0 %}
+            <a-entity look-at="[camera]" layout="type: box; columns:1; margin: ; plane:xy;">
+                <a-entity>
+                  <a-entity class="item" position="0 0 1" scale="0 0 0" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: {{currentCategory.color}};" show-detail="on: click;item:{{x.id}}"   >
+                     <a-animation attribute="scale" 
+                        delay="{{loopIndex*(animationBaseMl-220) + animationBaseMl-220}}"
+                         dur="{{animationBaseMl}}"
+                         begin="category-start"
+                         from="0 0 0"
+                         to="0.4 0.4 0.4"></a-animation>
+                    <a-entity geometry="primitive: plane; width: 4; height: 4;" material="side: front">
+                      <a-text  mixin="font-chalet" color="white" align="center" color="black" value="{{x.titulo}}"  width="3.5" wrap-count="15" align="center"></a-text>
+                    
+                     </a-entity>
+                     <a-entity class="detail" position="0 0 -0.2" rotation="0 180 0" geometry="primitive: plane; width: 4; height: 4;" material="side: front;shader:flat;color:white">
+                     
+                     
+     
+ <a-entity layout="type: box;align:start; columns:1;reverse:true; margin: 0.6; plane:xy;" position="0 -1.5 0">
+                <a-text  mixin="font-chalet" color="black" value="{{x.titulo}}" width="4" word-wrap="30" align="center"></a-text>
+
+                   <a-text  mixin="font-chalet" color="black" value="{{x.descripcion}}" width="3.5" wrap-count="40" align="center"></a-text>
+              <a-text  mixin="font-chalet" color="black" value="{{x.tamanio}} filas" align="center"></a-text>
+                <a-text  mixin="font-chalet" color="black" value="{{x.frecuencia}}" align="center"></a-text>
+                
+                <a-text  mixin="font-chalet" color="black" width="4" value="{{x.autoridad}}" align="center"></a-text>
+               
+                <a-entity>
+                   
+                    <!-- Trip  -->
+                  {% if x.isDestacado %}
+
+                  <a-entity position="0 0 0.22" go-to-{{x.destacado}}="on: click;item:{{x.id}}"
+                      event-set__1="_event: mousedown; scale: 1 1 1"
+                      event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+                      event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+                      event-set__4="_event: mouseleave; scale: 1 1 1" geometry="primitive: plane; width: 3; height: 0.5;" material="shader: flat; color: {{currentCategory.color}}" 
+                  sound="on: click; src: #click-sound"
+                  position="0 0 0" color="white" text="value: Explora una muestra; align:center">
+                  </a-entity>
+                  {% else %}
+                   <a-entity position="0 0 0.22"
+                      geometry="primitive: plane; width: 3; height: 0.5;" material="shader: flat;" 
+                      position="0 0 0" text="color:{{currentCategory.color}};value:Busca otro dataset para explorar; align:center">
+                      </a-entity>
+                  {% endif %}
+
+                </a-entity>
+                        </a-entity>
+        
+
+
+
+
+
+
+
+                     </a-entity>
+                  </a-entity>
+                </a-entity>
+                <a-entity>
+                  <a-entity layout="type: box;align:start; columns:1;reverse:true; margin: 0.6; plane:xy;">
+                    <a-entity material="side:double; shader: flat; color: white" >
+                      {% for z in range(0,x.barLength) %}
+                      <a-entity position="0 -{{z*0.25+2.25}} 0" geometry="primitive: plane;  width: 1.8; height: 0.22;"  material="side:double; shader: flat; color: white; opacity:0.75" >
+                      </a-entity>
+                      {% endfor %}
+                    
+                   
+                  </a-entity>
+                </a-entity>
+              </a-entity>
+                
+            </a-entity>
+            {% endfor %}
+       
+            </a-entity>
+     
+        </script>
+
+     <!-- Image link template to be reused. -->
+      <script id="circle-menu" type="text/x-nunjucks-template">
+        <a-entity layout="type: circle; radius: 6; plane:xz;" position="0 10 0">
+            
+            {% for x in categories %}
+               <a-entity look-at="[camera]" template="src: #link" data-src="#v{{x.key}}" data-link="{{x.key}}" data-thumb="#{{x.key}}-thumb" data-percentage="{{x.percentage}}" 
+               data-destacados="{{x.destacados}}" data-count="{{x.values.length}}" data-rows="{{x.rowsLabel}}"></a-entity>
+            {% endfor %}
+            <a-animation attribute="position" 
+                         begin="0"
+                         dur="1000"
+                         from="0 0 0"
+                         to="0 -10 0"></a-animation>
+      </a-entity>
+     
+        </script>
+      
+        <!-- Image link template to be reused. -->
+        <script id="poster" type="text/html">
+          <!-- <a-entity layout="type: line;columns:1; margin: 0.25;"> -->
+          <a-entity look-at="[camera]" class="link"
+            geometry="primitive: plane; height: 2; width: 1.3"
+            material="side:double;shader: flat; src: ${thumb}"
+            event-set__1="_event: mousedown; scale: 1 1 1"
+            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+            event-set__4="_event: mouseleave; scale: 1 1 1"
+            go-to-lobby="on: click; target: #image-360; src: ${src}"
+            sound="on: click; src: #click-sound"></a-entity>
+          <!-- </a-entity> -->
+        </script>
+      </a-assets>
+        
+        <!-- Image link template to be reused. -->
+        <script id="link" type="text/x-nunjucks-template">
+          
+          <a-entity look-at="[camera]" class="link"
+            geometry="primitive: plane; height: 2.5; width: 2"
+            material="side:double;shader: flat; src: {{thumb}}"
+            event-set__1="_event: mousedown; scale: 1 1 1"
+            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+            event-set__4="_event: mouseleave; scale: 1 1 1"
+            set-image="on: click; link:{{link}};target: #image-360; src: {{src}}"
+            sound="on: click; src: #click-sound"
+            "></a-entity>
+              <a-entity>
+                  <a-entity position="0.012676036232893928 1.5 0.00863929409054304" layout="type: box;align:start; columns:1;reverse:true; margin: 0; plane:xy;">
+                    <a-entity material="side:double; shader: flat; color: white" >
+                      {% for x in range(0,count) %}
+                      <a-entity position="0 {{x/3.5 + 0.425}} 0" geometry="primitive: plane;  width: 2; height: 0.25;"  material="side:double; shader: flat; color: white" >
+                      </a-entity>
+                      {% endfor  %}
+                  </a-entity>
+                </a-entity>
+              </a-entity>
+            <a-entity look-at="[camera]" position="0.012676036232893928 -1.513 0.00863929409054304" geometry="primitive: plane; width: 2; height: 0.35;" material="shader: flat; color: white">
+              <a-text mixin="font-chalet" color="black" value="esto es opcion" align="center" width="4" ></a-text>
+            </a-entity>
+        </script>
+      </a-assets>
+
+
+      <!-- 360-degree image. -->
+      <a-videosphere id="image-360" rotation="0 -90 0" radius="12" src="#v1" color="white"></a-videosphere>
+      <!-- Miradas Logo -->
+       <a-entity  id="circle-floor" 
+       go-to-lobby="on: click; target: #image-360; src: #lobby;"
+       class="floor" rotation="-90 0 0" position="0 -1.195 0" geometry="primitive: circle; radius: 1" material="shader: flat; color: white; width:1; height:1; opacity: 0.6;"></a-entity>
+
+      <a-entity id="lobby-circle"></a-entity> 
+      <a-entity id="category-circle"></a-entity> 
+      <a-entity id="detail-circle"></a-entity> 
+      <a-entity id="trip-detail"></a-entity> 
+
+
+      <!-- Camera + cursor. -->
+      <a-entity camera look-controls>
+        <a-cursor id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 150"
+          event-set__1="_event: mouseenter; color: springgreen"
+          event-set__2="_event: mouseleave; color: black"
+          fuse="true"></a-cursor>
+      </a-entity>
+    </a-scene>
+    <div id="wrapper" class="wrapper">
+      <div class="inner">
+        <h1> ¿Se sanciona al alumno?</h1>
+        <h5> Experiencia inmersiva de toma de decisiones en educación.</h5>
+        <p> </p>
+       <button type="button" onClick="start(this.parentNode.parentNode)">Empezar</button>
+        <h6> <small> Con el apoyo de </small> </h6>
+         <div class="logos">
+         <img src="logo-cluster.png">
+        </div>
+      </div>
+    </div>
+    <div id="second-wrapper" class="second-wrapper hidden">
+      <div class="inner">
+        <h1> El Aleph Invertido</h1>
+        <p> Continua la historia en 360</p>
+        <a class="button" href="https://www.youtube.com/watch?v=9hpRFnvSK88">Abrir YouTube!</a>
+      </div>
+    </div>
+    <script src="components/set-image.js"></script>
+    <script src="components/main.js"></script>
+
+  </body>
+</html>
