@@ -52,12 +52,12 @@ div.inner{
 a{
    font-family: 'Poppins', sans-serif;
    color: white;
-    text-decoration: underline;
+    text-decoration: none;
 }
 a.button, button{
   cursor: pointer;
   font-size: 2em;
-  border-radius: 2px;
+  border-radius: 5px;
    font-family: 'Poppins', sans-serif;
    color: black;
     text-decoration: underline;
