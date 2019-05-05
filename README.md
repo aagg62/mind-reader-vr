@@ -1,13 +1,15 @@
 # ¿COPIAR ES MALO? (Beta)
 
+### Introducción
+
 > Un alumno realiza un trabajo literario excepcional, 
 > copiando parcialmente a otro autor.
 >
 > ¿Debemos sancionarlo? 
 > ¿O perdonarlo tácitamente y felicitarlo por el resultado?
 
-## Para visualizar la experiencia en su etapa actual:
-https://luloxi.github.io/mind-reader-vr/
+## Para visualizarlo en su etapa actual:
+[Ingresar a la experiencia](https://luloxi.github.io/mind-reader-vr/)
 
 **Archivos útiles de modificar**
 
