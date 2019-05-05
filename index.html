@@ -16,6 +16,9 @@
     <script src="libs/nunjucks.min.js"> </script>
     <link href="stylesheets/main.css" rel="stylesheet">
     <link href="stylesheets/animate.css" rel="stylesheet">
+
+  </head>
+  
   <body>
     <a-scene  light="defaultLightsEnabled: false">
       <a-assets>
@@ -378,6 +381,9 @@
             set-image="on: click; link:{{link}};target: #image-360; src: {{src}}"
             sound="on: click; src: #click-sound"
             "></a-entity>
+
+<!-- CUADRADO BLANCO?? -->
+
               <a-entity>
                   <a-entity position="0.012676036232893928 1.5 0.00863929409054304" layout="type: box;align:start; columns:1;reverse:true; margin: 0; plane:xy;">
                     <a-entity material="side:double; shader: flat; color: white" >
@@ -388,6 +394,9 @@
                   </a-entity>
                 </a-entity>
               </a-entity>
+
+<!-- Rectángulo blanco con texto? -->
+
             <a-entity look-at="[camera]" position="0.012676036232893928 -1.513 0.00863929409054304" geometry="primitive: plane; width: 2; height: 0.35;" material="shader: flat; color: white">
               <a-text mixin="font-chalet" color="black" value="Punto verde y toque de dedo" align="center" width="4" ></a-text>
             </a-entity>
