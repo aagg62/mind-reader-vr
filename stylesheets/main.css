@@ -52,7 +52,7 @@ div.inner{
 a{
    font-family: 'Poppins', sans-serif;
    color: white;
-    text-decoration: none;
+    text-decoration: underline;
 }
 a.button, button{
   cursor: pointer;
@@ -60,7 +60,7 @@ a.button, button{
   border-radius: 5px;
    font-family: 'Poppins', sans-serif;
    color: black;
-    text-decoration: underline;
+    text-decoration: none;
     text-transform: uppercase;
 
   /*height: 20px;
