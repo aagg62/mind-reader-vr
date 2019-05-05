@@ -11,14 +11,6 @@
 ## Para visualizarlo en su etapa actual:
 [Ingresar a la experiencia](https://luloxi.github.io/mind-reader-vr/)
 
-**Archivos útiles de modificar**
-
-- index.html
-- /components/main.js
-- ??
-
----
-
 ## Correcciones pendientes
 
 1. Agregar texto flotante en medio de ambos, sincronizado cuando terminen de hablar (y si puede aparecer con animate.css, mucho mejor), y que medio segundo más tarde aparezca un círculo que rodea a ambos personajes para poder decidir en la primera transición con quien se está de acuerdo.
@@ -32,3 +24,11 @@
 5. Para llegar a la conclusión (v4 y v5) quería hacer otros botones con texto, pero aún no definí que quiero poner ahí, sólo quisiera que sea posible.
 
 Básicamente lo que quisiera es saber cómo mover, cambiar de tamaño y determinar cuando aparecen y desaparecen las figuras planas y el texto durante la reproducción de los distintos videos para darle más armonía y estética a la interacción. 
+
+## Nota
+
+**Archivos útiles de modificar**
+
+- index.html
+- /components/main.js
+- ??
