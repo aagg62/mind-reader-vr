@@ -81,7 +81,7 @@ window.game = {
         location.href = 'http://www.blogcreacultura.com/cuando-copiar-es-bueno/';
     });
 
-		var v5 = document.getElementById('v4');
+		var v5 = document.getElementById('v5');
 		video.addEventListener('ended',function(){
         location.href = 'http://www.blogcreacultura.com/cuando-copiar-es-bueno/';
     });
