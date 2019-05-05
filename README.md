@@ -6,17 +6,14 @@
 > ¿Debemos sancionarlo? 
 > ¿O perdonarlo tácitamente y felicitarlo por el resultado?
 
----
+##Para visualizar la experiencia en su etapa actual:
+https://luloxi.github.io/mind-reader-vr/
 
-Para visualizar la experiencia en su etapa actual: https://luloxi.github.io/mind-reader-vr/
+**Archivos útiles de modificar**
 
-Estuve mirando el código y creo haber entendido algunas cosas, pero todavía me falta mucho por entender (quizás demasiado).
-
-Lo que creo haber entendido es que buena parte de lo que tengo que cambiar para modificar todo está en /index.html, pero tambien hay algunas cosas en /components/main.js (hay algún archivo más que vaya a interesarme editar?)
-
-Tras el dialogo de conclusión, configuré que se redireccione a una página con un artículo que me pareció que articulaba bien con esto.
-
-Básicamente lo que quisiera es saber cómo mover, cambiar de tamaño y determinar cuando aparecen y desaparecen las figuras planas y el texto durante la reproducción de los distintos videos para darle más armonía y estética a la interacción.
+- index.html
+- /components/main.js
+- ??
 
 ---
 
@@ -32,3 +29,4 @@ Básicamente lo que quisiera es saber cómo mover, cambiar de tamaño y determin
 
 5. Para llegar a la conclusión (v4 y v5) quería hacer otros botones con texto, pero aún no definí que quiero poner ahí, sólo quisiera que sea posible.
 
+Básicamente lo que quisiera es saber cómo mover, cambiar de tamaño y determinar cuando aparecen y desaparecen las figuras planas y el texto durante la reproducción de los distintos videos para darle más armonía y estética a la interacción. 
