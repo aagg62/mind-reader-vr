@@ -6,7 +6,7 @@
 > ¿Debemos sancionarlo? 
 > ¿O perdonarlo tácitamente y felicitarlo por el resultado?
 
-##Para visualizar la experiencia en su etapa actual:
+## Para visualizar la experiencia en su etapa actual:
 https://luloxi.github.io/mind-reader-vr/
 
 **Archivos útiles de modificar**
@@ -17,7 +17,7 @@ https://luloxi.github.io/mind-reader-vr/
 
 ---
 
-[ Correcciones pendientes ]
+## Correcciones pendientes
 
 1. Agregar texto flotante en medio de ambos, sincronizado cuando terminen de hablar (y si puede aparecer con animate.css, mucho mejor), y que medio segundo más tarde aparezca un círculo que rodea a ambos personajes para poder decidir en la primera transición con quien se está de acuerdo.
 
