@@ -15,6 +15,7 @@
     <script src="libs/d3/d3.min.js"></script>
     <script src="libs/nunjucks.min.js"> </script>
     <link href="stylesheets/main.css" rel="stylesheet">
+    <link href="stylesheets/animate.css" rel="stylesheet">
   <body>
     <a-scene  light="defaultLightsEnabled: false">
       <a-assets>
@@ -54,7 +55,7 @@
             <a-entity look-at="[camera]" layout="type: box; columns:1; margin: ; plane:xy;">
                 <a-entity>
                   <a-entity class="item" position="0 0 1" scale="0 0 0" geometry="primitive: plane; width: 4; height: 4;" material="side:front; shader: flat; color: {{currentCategory.color}};" show-detail="on: click;item:{{x.id}}" 
-                    event-set__1="_event: mousedown; scale: 0.9 0.4 0.4"
+                    event-set__1="_event: mousedown; scale: 0.4 0.4 0.4"
                       event-set__2="_event: mouseup; scale: 0.6 0.6 0.6"
                       event-set__3="_event: mouseenter; scale: 0.6 0.6 0.6"
                       event-set__4="_event: mouseleave; scale: 0.4 0.4 0.4"  >
@@ -313,7 +314,7 @@
     </a-scene>
     <div id="wrapper" class="wrapper">
       <div class="inner">
-        <h1> ¿Copiar es malo? </h1>
+        <h1 class="animated infinite pulse">> ¿Copiar es malo? </h1>
         <p>Un alumno realiza un trabajo literario excepcional, 
           <br />pero que copia parcialmente a otro autor.</p>
           ¿Debemos sancionarlo?
