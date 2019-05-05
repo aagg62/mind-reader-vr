@@ -23,6 +23,8 @@
 
 5. Para llegar a la conclusión (v4 y v5) quería hacer otros botones con texto, pero aún no definí que quiero poner ahí, sólo quisiera que sea posible.
 
+6. Borrar la base del trípode de la cámara con un círculo blanco, pero no tan grande como el que estaba originalmente. 
+
 Básicamente lo que quisiera es saber cómo mover, cambiar de tamaño y determinar cuando aparecen y desaparecen las figuras planas y el texto durante la reproducción de los distintos videos para darle más armonía y estética a la interacción. 
 
 ## Nota
