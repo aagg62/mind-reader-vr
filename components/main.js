@@ -5,7 +5,7 @@ var env = new nunjucks.Environment();
 
 var random = Math.random();
 
- 	var videos = ["v1","v2", 'v3', 'v4','v5'];  
+ 	var videos = ["v1","v2",'v3','v4','v5'];  
     var played = [false,false,false,false,false];
     var youtubeLaps = 0;
     var lapCount = 0 ;
@@ -75,6 +75,16 @@ window.game = {
 		var v1 = document.getElementById('v1');
 		v1.addEventListener('ended', myHandler, false);
 		v1.play();
+
+		var v4 = document.getElementById('v4');
+		video.addEventListener('ended',function(){
+        location.href = 'http://www.blogcreacultura.com/cuando-copiar-es-bueno/';
+    });
+
+		var v5 = document.getElementById('v4');
+		video.addEventListener('ended',function(){
+        location.href = 'http://www.blogcreacultura.com/cuando-copiar-es-bueno/';
+    });
 
 		var playLoop = false;
 		v1.addEventListener('timeupdate', (e) => {
