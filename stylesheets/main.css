@@ -57,6 +57,7 @@ a{
 a.button, button{
   cursor: pointer;
   font-size: 2em;
+  border-radius: 2px;
    font-family: 'Poppins', sans-serif;
    color: black;
     text-decoration: underline;
