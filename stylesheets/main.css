@@ -45,9 +45,10 @@ h1{
   justify-content: center;
 }
 div.inner{
-  padding:2em;
+  padding: 2em;
   text-align: center;
-  color:white;
+  color: white;
+  line-height: 1.5em;
 }
 a{
    font-family: 'Poppins', sans-serif;
